@@ -25,13 +25,18 @@ var employeesList = [];
 
 $("#add-employee-button").on("click", function(event) {
     event.preventDefault();
+
+    startDate = moment($('#date').val().trim()).format('MM-DD-YYYY');
+    monthsWork = moment().diff(startDate, 'months');
+    totalBill = $('#rate').val().trim() * monthsWork;
     
     var emp = {};
     emp.empName = $('#name').val().trim();
     emp.role = $('#role').val().trim();
     emp.startDate = $('#date').val().trim();
     emp.monthlyRate = $('#rate').val().trim();
-    
+    emp.monthsWork = monthsWork;
+    emp.totalBill = totalBill;
 
     
     database.ref().push(emp);
@@ -61,7 +66,7 @@ function fillEmployees(emp) {
         elestart.text(emp[i].startDate);
     
         var elemonths = $('<td>');
-        elemonths.text(emp[i].monthsWorked);
+        elemonths.text(emp[i].monthsWork);
     
         var elemonRate = $('<td>');
         elemonRate.text(emp[i].monthlyRate);
