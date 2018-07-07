@@ -1,5 +1,12 @@
 var employeesList = [];
 
+function clearForm() {
+    $("#name").val("");
+    $("#role").val("");
+    $("#date").val("");
+    $("#rate").val("");
+ }
+
 
 $("#add-employee-btn").on("click", function(event) {
     event.preventDefault();
@@ -46,6 +53,6 @@ $("#add-employee-btn").on("click", function(event) {
 
     $('tbody').append(tr);
 
-
+    clearForm();
 });
 
