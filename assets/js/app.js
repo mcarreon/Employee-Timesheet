@@ -1,19 +1,27 @@
 var employeesList = [];
 
+function clearForm() {
+    $("#name").val("");
+    $("#role").val("");
+    $("#date").val("");
+    $("#rate").val("");
+ }
+
 
 $("#add-employee-btn").on("click", function(event) {
     event.preventDefault();
     
     var emp = {};
-    emp.empName = $().val().trim();
-    emp.role = $().val().trim();
-    emp.startDate = $().val().trim();
-    emp.monthlyRate = $().val().trim();
+    emp.empName = $('#name').val().trim();
+    emp.role = $('#role').val().trim();
+    emp.startDate = $('#date').val().trim();
+    emp.monthlyRate = $('#rate').val().trim();
     
     emp.monthsWorked = emp.startDate;
     emp.totalBill = emp.monthlyRate;
 
     employeesList.push(emp);
+    database.ref().push(emp);
 
     var tr = $('<tr>');
 
@@ -44,5 +52,7 @@ $("#add-employee-btn").on("click", function(event) {
     tr.append(eletotalBill);
 
     $('tbody').append(tr);
+
+    clearForm();
 });
 
