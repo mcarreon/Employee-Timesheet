@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Employee Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="assets/js/app.js"></script>
+</head>
+<body>
+    <!--Jumbotron-->
+    <div class="jumbotron" style="width: 960px; text-align: center; margin: 0 auto;">
+        <h1 class="display-4">Employee Data Management</h1>
+        <p class="lead">A Comprehensive Directory of Employee Billable Hours</p>
+    </div>
+    <!--Add Employees-->
+    <form>
+        <div class=“EmployeeName”>
+            <label for=“employeename”>Employee Name</label>
+            <input type="text" class=“form-control” id=“name” placeholder=“Jane Doe”>
+        </div>
+        <div class=“role”>
+            <label for="formGroupExampleInput2">Another label</label>
+            <input type="text" class=“form-control” id=“role” placeholder=“CEO”>
+        </div>
+        <div class=“StartDate”>
+            <label for=“StartDate”>Start Date (MM/DD/YYYY)</label>
+            <input type="text" class=“form-control” id=“date” placeholder="01/08/1989">
+        </div>
+        <div class=“MonthlyRate”>
+            <label for=“MonthlyRate”>Monthly Rate</label>
+            <input type="text" class=“form-control” id=“rate” placeholder="2000000">
+        </div>
+    </form>
+    <button type="button" class=“btn btn-primary”>Submit</button>
+    <!--Current Employees Field-->
+    <div class="card" style="width: 960px; margin-left:auto; margin-right: auto">
+        <div class="card-body">
+            <div>
+                <h4 style="text-align: center">Current Employees</h4>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Employee Name</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">Months Worked</th>
+                        <th scope="col">Monthly Rate ($)</th>
+                        <th scope="col">Total Billed ($)</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript"></script>
+</body>
+</html>
