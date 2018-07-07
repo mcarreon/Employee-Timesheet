@@ -3,7 +3,11 @@ function clearForm() {
     $("#role").val("");
     $("#date").val("");
     $("#rate").val("");
- }
+}
+
+function clearTable() {
+    $('<tbody>').empty();
+}
 
 // Initialize Firebase
 var config = {
@@ -19,7 +23,7 @@ database = firebase.database();
 
 var employeesList = [];
 
-$("#add-employee-btn").on("click", function(event) {
+$("#add-employee-button").on("click", function(event) {
     event.preventDefault();
     
     var emp = {};
@@ -28,42 +32,50 @@ $("#add-employee-btn").on("click", function(event) {
     emp.startDate = $('#date').val().trim();
     emp.monthlyRate = $('#rate').val().trim();
     
-    emp.monthsWorked = emp.startDate;
-    emp.totalBill = emp.monthlyRate;
 
     employeesList.push(emp);
     database.ref().push(emp);
 
-    var tr = $('<tr>');
-
-    var elename = $('<td>');
-    elename.text(emp.empName);
-
-    var elerole = $('<td>');
-    elerole.text(emp.role);
-
-    var elestart = $('<td>');
-    elestart.text(emp.startDate);
-
-    var elemonths = $('<td>');
-    elemonths.text(emp.monthsWorked);
-
-    var elemonRate = $('<td>');
-    elemonRate.text(emp.monthlyRate);
-
-    var eletotalBill = $('<td>'); 
-    eletotalBill.text(emp.totalBill);
-
-    
-    tr.append(elename);
-    tr.append(elerole);
-    tr.append(elestart);
-    tr.append(elemonths);
-    tr.append(elemonRate);
-    tr.append(eletotalBill);
-
-    $('tbody').append(tr);
-
     clearForm();
 });
 
+database.ref().on('child_added', function(snapshot) {
+    console.log(snapshot.val());
+})
+
+function fillEmployees(emp) {
+    clearTable();
+
+    for (var i = 0; i < emp.length; i++) {
+        var tr = $('<tr>');
+
+        var elename = $('<td>');
+        elename.text(emp.empName);
+    
+        var elerole = $('<td>');
+        elerole.text(emp.role);
+    
+        var elestart = $('<td>');
+        elestart.text(emp.startDate);
+    
+        var elemonths = $('<td>');
+        elemonths.text(emp.monthsWorked);
+    
+        var elemonRate = $('<td>');
+        elemonRate.text(emp.monthlyRate);
+    
+        var eletotalBill = $('<td>'); 
+        eletotalBill.text(emp.totalBill);
+    
+        
+        tr.append(elename);
+        tr.append(elerole);
+        tr.append(elestart);
+        tr.append(elemonths);
+        tr.append(elemonRate);
+        tr.append(eletotalBill);
+    
+        $('tbody').append(tr);
+
+    }     
+}
