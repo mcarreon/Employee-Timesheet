@@ -34,38 +34,40 @@ $("#add-employee-button").on("click", function(event) {
     
 
     employeesList.push(emp);
-    database.ref().push(emp);
+    database.ref().push(employeesList);
 
     clearForm();
 });
 
 database.ref().on('child_added', function(snapshot) {
-    console.log(snapshot.val());
-})
+    employeesList = snapshot.val();
+    fillEmployees(employeesList);
+});
 
 function fillEmployees(emp) {
     clearTable();
+    console.log(emp);
 
     for (var i = 0; i < emp.length; i++) {
         var tr = $('<tr>');
 
         var elename = $('<td>');
-        elename.text(emp.empName);
+        elename.text(emp[i].empName);
     
         var elerole = $('<td>');
-        elerole.text(emp.role);
+        elerole.text(emp[i].role);
     
         var elestart = $('<td>');
-        elestart.text(emp.startDate);
+        elestart.text(emp[i].startDate);
     
         var elemonths = $('<td>');
-        elemonths.text(emp.monthsWorked);
+        elemonths.text(emp[i].monthsWorked);
     
         var elemonRate = $('<td>');
-        elemonRate.text(emp.monthlyRate);
+        elemonRate.text(emp[i].monthlyRate);
     
         var eletotalBill = $('<td>'); 
-        eletotalBill.text(emp.totalBill);
+        eletotalBill.text(emp[i].totalBill);
     
         
         tr.append(elename);
@@ -76,6 +78,5 @@ function fillEmployees(emp) {
         tr.append(eletotalBill);
     
         $('tbody').append(tr);
-
     }     
 }
