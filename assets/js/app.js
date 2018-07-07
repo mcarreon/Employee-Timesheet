@@ -1,5 +1,3 @@
-var employeesList = [];
-
 function clearForm() {
     $("#name").val("");
     $("#role").val("");
@@ -7,6 +5,19 @@ function clearForm() {
     $("#rate").val("");
  }
 
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyB38SVdf2SObtbKFyt4OenutB7oUDw0dLI",
+    authDomain: "uclax-85776.firebaseapp.com",
+    databaseURL: "https://uclax-85776.firebaseio.com",
+    projectId: "uclax-85776",
+    storageBucket: "uclax-85776.appspot.com",
+    messagingSenderId: "140111681205"
+};
+firebase.initializeApp(config);
+database = firebase.database();
+
+var employeesList = [];
 
 $("#add-employee-btn").on("click", function(event) {
     event.preventDefault();

@@ -23,18 +23,18 @@
         </div>
         <div class=role>
             <label for="formGroupExampleInput2">Another label</label>
-            <input type="text" class=form-control id=role placeholder=CEO>
+            <input type="text" class="form-control" id="role" placeholder=CEO>
         </div>
         <div class=StartDate>
             <label for=StartDate>Start Date (MM/DD/YYYY)</label>
-            <input type="text" class=form-control id=date placeholder="01/08/1989">
+            <input type="text" class="form-control" id="date" placeholder="01/08/1989">
         </div>
         <div class=MonthlyRate>
             <label for=MonthlyRate>Monthly Rate</label>
-            <input type="text" class=form-control id=rate placeholder="2000000">
+            <input type="text" class="form-control" id="rate" placeholder="2000000">
         </div>
     </form>
-    <button type="button" class=btn btn-primary>Submit</button>
+    <button type="button" class="btn btn-primary" id="add-employee-btn">Submit</button>
     <!--Current Employees Field-->
     <div class="card" style="width: 960px; margin-left:auto; margin-right: auto">
         <div class="card-body">
@@ -57,18 +57,6 @@
         </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyB38SVdf2SObtbKFyt4OenutB7oUDw0dLI",
-            authDomain: "uclax-85776.firebaseapp.com",
-            databaseURL: "https://uclax-85776.firebaseio.com",
-            projectId: "uclax-85776",
-            storageBucket: "uclax-85776.appspot.com",
-            messagingSenderId: "140111681205"
-        };
-        firebase.initializeApp(config);
-    </script>
     <script src="assets/js/app.js"></script>
 </body>
 </html>
