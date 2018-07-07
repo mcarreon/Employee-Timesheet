@@ -6,7 +6,7 @@ function clearForm() {
 }
 
 function clearTable() {
-    $('<tbody>').empty();
+    $('tbody>').empty();
 }
 
 // Initialize Firebase
@@ -33,14 +33,14 @@ $("#add-employee-button").on("click", function(event) {
     emp.monthlyRate = $('#rate').val().trim();
     
 
-    employeesList.push(emp);
-    database.ref().push(employeesList);
+    
+    database.ref().push(emp);
 
     clearForm();
 });
 
 database.ref().on('child_added', function(snapshot) {
-    employeesList = snapshot.val();
+    employeesList.push(snapshot.val());
     fillEmployees(employeesList);
 });
 
